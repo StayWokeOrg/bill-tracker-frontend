@@ -1,1 +1,44 @@
 @import "normalize.css";
+
+$spacer: 1.5rem;
+$spacer-mini: 1.25rem;
+
+$theme-positive-green: #00C870;
+
+$border-color: #e0e0e0;
+$border-radius: 4px;
+$border: 1px solid $border-color;
+
+.test-container {
+  padding-top: calc($spacer * 4);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.card {
+  border-radius: 3px;
+}
+
+.card__body {
+  border: $border;
+  border-top: none;
+  border-bottom-right-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  padding-top: $spacer;
+  padding-bottom: $spacer;
+}
+
+.card__header,
+.card__body {
+  padding-left: $spacer;
+  padding-right: $spacer;
+}
+
+.card__header {
+  padding-top: $spacer-mini;
+  padding-bottom: $spacer-mini;
+  background-color: $theme-positive-green;
+  color: white;
+  border-top-right-radius: $border-radius;
+  border-top-left-radius: $border-radius;
+}
