@@ -9,10 +9,13 @@
     "cssnano": "^3.10.0",
     "postcss-cli": "^3.0.0",
     "postcss-extend": "^1.0.5",
+    "postcss-hexrgba": "^0.2.1",
     "postcss-import": "^9.1.0",
+    "postcss-inline-svg": "^2.3.0",
     "postcss-mixins": "^5.4.1",
     "postcss-nested": "^1.0.0",
-    "postcss-simple-vars": "^3.1.0"
+    "postcss-simple-vars": "^3.1.0",
+    "postcss-strip-inline-comments": "^0.1.5"
   },
   "dependencies": {
     "normalize.css": "^6.0.0"
@@ -20,11 +23,14 @@
   "postcss": {
     "map": false,
     "plugins": {
+      "postcss-simple-vars": {},
       "postcss-extend": {},
       "postcss-import": {},
       "postcss-mixins": {},
       "postcss-nested": {},
-      "postcss-simple-vars": {},
+      "postcss-hexrgba": {},
+      "postcss-inline-svg": {},
+      "postcss-strip-inline-comments": {},
       "cssnano": {}
     }
   }

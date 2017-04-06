@@ -1,44 +1,138 @@
 @import "normalize.css";
 
-$spacer: 1.5rem;
-$spacer-mini: 1.25rem;
+$spacer: 0.5rem;
+$spacer-2: 0.75rem;
+$spacer-3: 1rem;
+$spacer-4: 1.25rem;
+$spacer-5: 1.5rem;
 
 $theme-positive-green: #00C870;
+$theme-positive-green-inactive: rgba(#50CC97, 0.25);
 
 $border-color: #e0e0e0;
 $border-radius: 4px;
 $border: 1px solid $border-color;
 
+$font-size-body: 0.9375rem;
+$font-size-heading: 1.125rem;
+
+$line-height-headings: 1.33;
+$line-height-body: 1.45;
+
+%heading {
+  font-size: $font-size-heading;
+  font-weight: 700;
+  line-height: $line-height-headings;
+  margin: 0;
+}
+
 .test-container {
-  padding-top: calc($spacer * 4);
+  padding-top: calc($spacer-5 * 4);
   max-width: 720px;
   margin: 0 auto;
+  font-family: sans-serif;
 }
 
 .card {
   border-radius: 3px;
+  box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.05);
 }
 
-.card__body {
+.card-body {
   border: $border;
   border-top: none;
   border-bottom-right-radius: $border-radius;
   border-bottom-left-radius: $border-radius;
-  padding-top: $spacer;
-  padding-bottom: $spacer;
+  padding-top: $spacer-5;
+  padding-bottom: $spacer-5;
+  font-size: $font-size-body;
+  line-height: $line-height-body;
 }
 
-.card__header,
-.card__body {
-  padding-left: $spacer;
-  padding-right: $spacer;
+.card-header,
+.card-body {
+  padding-left: $spacer-5;
+  padding-right: $spacer-5;
 }
 
-.card__header {
-  padding-top: $spacer-mini;
-  padding-bottom: $spacer-mini;
+.card-header {
+  display: flex;
   background-color: $theme-positive-green;
   color: white;
   border-top-right-radius: $border-radius;
   border-top-left-radius: $border-radius;
+}
+
+.card-header__title,
+.card-header__subtitle {
+  @extend %heading;
+  align-self: center;
+  padding-top: $spacer-4;
+  padding-bottom: $spacer-4;
+}
+
+.card-header__title {
+  text-transform: uppercase;
+}
+
+.card-header__subtitle {
+  // color: rgba(255, 255, 255, 0.87);
+}
+
+.card-header__divider {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 0.9rem $spacer-4;
+  width: 1px;
+  height: auto;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+}
+
+.list-item__icon {
+  width: 2.625rem;
+}
+
+.list-item__body {
+  flex: 1;
+}
+
+.list-item__heading {
+  @extend %heading;
+  margin-bottom: $spacer;
+}
+
+.list-item__desc {
+  margin: 0;
+}
+
+.progress__bar {
+  position: relative;
+  height: 8px;
+  background-color: $theme-positive-green-inactive;
+
+}
+
+.progress__bar:after {
+  content: '';
+  position: absolute;
+  height: 8px;
+  width: 50%;
+  background-color: $theme-positive-green;
+}
+
+.progress-step__icon {
+  content: svg-load(../images/icon-lightbulb.svg, fill=#fff);
+  padding: $spacer-3;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  background-color: $theme-positive-green;
 }
