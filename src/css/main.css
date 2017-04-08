@@ -5,19 +5,27 @@ $spacer-2: 0.75rem;
 $spacer-3: 1rem;
 $spacer-4: 1.25rem;
 $spacer-5: 1.5rem;
+$spacer-6: 1.75rem;
 
 $theme-positive-green: #00C870;
-$theme-positive-green-inactive: rgba(#50CC97, 0.25);
+$theme-positive-green-inactive: #D3F2E5;
 
+$text-muted-color: #b1b1b1;
 $border-color: #e0e0e0;
 $border-radius: 4px;
 $border: 1px solid $border-color;
 
+$font-size-caption: 0.75rem;
 $font-size-body: 0.9375rem;
 $font-size-heading: 1.125rem;
 
 $line-height-headings: 1.33;
 $line-height-body: 1.45;
+
+$progress-rail-height: 7px;
+
+$progress-step-height: 32px;
+$progress-step-done-height: 55px;
 
 %heading {
   font-size: $font-size-heading;
@@ -75,10 +83,6 @@ $line-height-body: 1.45;
   text-transform: uppercase;
 }
 
-.card-header__subtitle {
-  // color: rgba(255, 255, 255, 0.87);
-}
-
 .card-header__divider {
   background-color: rgba(255, 255, 255, 0.5);
   margin: 0.9rem $spacer-4;
@@ -94,6 +98,7 @@ $line-height-body: 1.45;
 
 .list-item {
   display: flex;
+  padding-right: $spacer-4;
 }
 
 .list-item__icon {
@@ -110,29 +115,80 @@ $line-height-body: 1.45;
 }
 
 .list-item__desc {
-  margin: 0;
+  margin: 0 0 $spacer-6 0;
 }
 
-.progress__bar {
+.progress {
+  display: flex;
   position: relative;
-  height: 8px;
-  background-color: $theme-positive-green-inactive;
-
+  justify-content: space-between;
 }
 
-.progress__bar:after {
-  content: '';
-  position: absolute;
-  height: 8px;
-  width: 50%;
-  background-color: $theme-positive-green;
+.progress-step {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: calc($progress-step-done-height / 2 - $progress-step-height / 2);
+}
+
+.progress-step__title {
+  font-size: $font-size-caption;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: auto;
+  color: $text-muted-color;
 }
 
 .progress-step__icon {
   content: svg-load(../images/icon-lightbulb.svg, fill=#fff);
-  padding: $spacer-3;
+  padding: calc($progress-step-height / 4);
+  width: calc($progress-step-height / 2);
+  height: calc($progress-step-height / 2);
   border-radius: 50%;
-  width: 27px;
-  height: 27px;
+  background-color: $theme-positive-green-inactive;
+}
+
+.progress-step--done {
+  padding-bottom: 0;
+
+  .progress-step__title {
+    color: #000;
+    margin-bottom: $spacer;
+  }
+
+  .progress-step__icon {
+    content: svg-load(../images/icon-lightbulb.svg, fill=#fff);
+    padding: calc($progress-step-done-height / 4);
+    width: calc($progress-step-done-height / 2);
+    height: calc($progress-step-done-height / 2);
+    border-radius: 50%;
+    background-color: $theme-positive-green;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.13);
+  }
+}
+
+.progress-bar {
+  position: absolute;
+  width: 100%;
+  bottom: calc($progress-step-done-height / 2);
+  margin-bottom: -calc($progress-rail-height / 2);
+}
+
+.progress-bar__inner {
+  z-index: -10;
+  position: relative;
+  height: $progress-rail-height;
+  background-color: $theme-positive-green-inactive;
+  margin: 0 40px;
+}
+
+.progress-bar__inner:after {
+  content: '';
+  position: absolute;
+  height: $progress-rail-height;
+  width: 33%;
   background-color: $theme-positive-green;
+  z-index: 10;
 }
