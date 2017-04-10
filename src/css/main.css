@@ -8,9 +8,9 @@ $spacer-5: 1.5rem;
 $spacer-6: 1.75rem;
 
 $theme-positive-green: #00C870;
-$theme-positive-green-inactive: #D3F2E5;
+$theme-positive-green-inactive: #C4EDDC;
+$theme-positive-green-text-muted: #ABD1C1;
 
-$text-muted-color: #b1b1b1;
 $border-color: #e0e0e0;
 $border-radius: 4px;
 $border: 1px solid $border-color;
@@ -24,7 +24,7 @@ $line-height-body: 1.45;
 
 $progress-rail-height: 7px;
 
-$progress-step-height: 32px;
+$progress-step-height: 28px;
 $progress-step-done-height: 55px;
 
 %heading {
@@ -138,11 +138,10 @@ $progress-step-done-height: 55px;
   text-align: center;
   margin-top: 0;
   margin-bottom: auto;
-  color: $text-muted-color;
+  color: $theme-positive-green-text-muted;
 }
 
 .progress-step__icon {
-  content: svg-load(../images/icon-lightbulb.svg, fill=#fff);
   padding: calc($progress-step-height / 4);
   width: calc($progress-step-height / 2);
   height: calc($progress-step-height / 2);
@@ -154,7 +153,7 @@ $progress-step-done-height: 55px;
   padding-bottom: 0;
 
   .progress-step__title {
-    color: #000;
+    color: $theme-positive-green;
     margin-bottom: $spacer;
   }
 
@@ -165,7 +164,6 @@ $progress-step-done-height: 55px;
     height: calc($progress-step-done-height / 2);
     border-radius: 50%;
     background-color: $theme-positive-green;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.13);
   }
 }
 
