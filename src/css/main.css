@@ -24,8 +24,14 @@ $line-height-body: 1.45;
 
 $progress-rail-height: 7px;
 
-$progress-step-height: 28px;
+$progress-step-height: 32px;
 $progress-step-done-height: 55px;
+
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
 
 %heading {
   font-size: $font-size-heading;
@@ -120,16 +126,27 @@ $progress-step-done-height: 55px;
 
 .progress {
   display: flex;
+  flex-direction: column;
   position: relative;
   justify-content: space-between;
+  align-items: flex-start;
+
+  @media (min-width: $breakpoint-sm) {
+    flex-direction: row;
+    align-items: stretch;
+  }
 }
 
 .progress-step {
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: row;
   justify-content: flex-end;
   padding-bottom: calc($progress-step-done-height / 2 - $progress-step-height / 2);
+
+  @media (min-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
 }
 
 .progress-step__title {
@@ -139,6 +156,12 @@ $progress-step-done-height: 55px;
   margin-top: 0;
   margin-bottom: auto;
   color: $theme-positive-green-text-muted;
+  order: 2;
+
+  @media (min-width: $breakpoint-sm) {
+    flex-direction: column;
+    order: 0;
+  }
 }
 
 .progress-step__icon {
