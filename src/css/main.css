@@ -20,9 +20,10 @@ $font-size-body: 0.9375rem;
 $font-size-heading: 1.125rem;
 
 $line-height-headings: 1.33;
-$line-height-body: 1.45;
+$line-height-body: 1.5;
 
-$progress-rail-height: 7px;
+$progress-bar-thickness: 4px;
+$progress-bar-thickness-lg: 7px;
 
 $progress-step-height: 32px;
 $progress-step-done-height-lg: 55px;
@@ -178,6 +179,10 @@ $breakpoint-xl: 1200px;
 
 .progress-step + .progress-step {
   margin-top: $spacer-3;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-top: 0;
+  }
 }
 
 .progress-step__info {
@@ -224,7 +229,7 @@ $breakpoint-xl: 1200px;
     border-radius: 50%;
     background-color: $theme-positive-green;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $breakpoint-sm) {
       padding: calc($progress-step-done-height-lg / 4);
       width: calc($progress-step-done-height-lg / 2);
       height: calc($progress-step-done-height-lg / 2);
@@ -234,24 +239,45 @@ $breakpoint-xl: 1200px;
 
 .progress-bar {
   position: absolute;
-  width: 100%;
-  bottom: calc($progress-step-done-height-lg / 2);
-  margin-bottom: -calc($progress-rail-height / 2);
+  /* HACK - find better way to give bar top/bottom padding */
+  height: 95%;
+  left: calc($progress-step-height / 2);
+  margin-left: -calc($progress-bar-thickness / 2);
+
+  @media (min-width: $breakpoint-sm) {
+    width: 100%;
+    height: auto;
+    bottom: calc($progress-step-done-height-lg / 2);
+    left: auto;
+    margin-bottom: -calc($progress-bar-thickness-lg / 2);
+    margin-left: 0;
+  }
 }
 
 .progress-bar__inner {
   z-index: -10;
   position: relative;
-  height: $progress-rail-height;
+  width: $progress-bar-thickness;
+  height: 100%;
   background-color: $theme-positive-green-inactive;
-  margin: 0 40px;
+
+  @media (min-width: $breakpoint-sm) {
+    width: auto;
+    height: $progress-bar-thickness-lg;
+    margin: 0 40px;
+  }
 }
 
 .progress-bar__inner:after {
   content: '';
   position: absolute;
-  height: $progress-rail-height;
-  width: 33%;
+  height: 33%;
+  width: $progress-bar-thickness;
   background-color: $theme-positive-green;
   z-index: 10;
+
+  @media (min-width: $breakpoint-sm) {
+    width: 33%;
+    height: $progress-bar-thickness-lg;
+  }
 }
