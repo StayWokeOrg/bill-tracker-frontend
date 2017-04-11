@@ -25,7 +25,7 @@ $line-height-body: 1.45;
 $progress-rail-height: 7px;
 
 $progress-step-height: 32px;
-$progress-step-done-height: 55px;
+$progress-step-done-height-lg: 55px;
 
 $breakpoint-xs: 0;
 $breakpoint-sm: 576px;
@@ -57,16 +57,26 @@ $breakpoint-xl: 1200px;
   border-top: none;
   border-bottom-right-radius: $border-radius;
   border-bottom-left-radius: $border-radius;
-  padding-top: $spacer-5;
-  padding-bottom: $spacer-5;
+  padding-top: $spacer-3;
+  padding-bottom: $spacer-3;
   font-size: $font-size-body;
   line-height: $line-height-body;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-top: $spacer-5;
+    padding-bottom: $spacer-5;
+  }
 }
 
 .card-header,
 .card-body {
-  padding-left: $spacer-5;
-  padding-right: $spacer-5;
+  padding-left: $spacer-3;
+  padding-right: $spacer-3;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-left: $spacer-5;
+    padding-right: $spacer-5;
+  }
 }
 
 .card-header {
@@ -81,8 +91,13 @@ $breakpoint-xl: 1200px;
 .card-header__subtitle {
   @extend %heading;
   align-self: center;
-  padding-top: $spacer-4;
-  padding-bottom: $spacer-4;
+  padding-top: $spacer-2;
+  padding-bottom: $spacer-2;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-top: $spacer-4;
+    padding-bottom: $spacer-4;
+  }
 }
 
 .card-header__title {
@@ -91,9 +106,14 @@ $breakpoint-xl: 1200px;
 
 .card-header__divider {
   background-color: rgba(255, 255, 255, 0.5);
-  margin: 0.9rem $spacer-4;
+  margin: 0.9rem $spacer-3;
   width: 1px;
   height: auto;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-left: $spacer-4;
+    margin-right: $spacer-4;
+  }
 }
 
 .list {
@@ -104,11 +124,18 @@ $breakpoint-xl: 1200px;
 
 .list-item {
   display: flex;
-  padding-right: $spacer-4;
+
+  @media (min-width: $breakpoint-md) {
+    padding-right: $spacer-4;
+  }
 }
 
 .list-item__icon {
-  width: 2.625rem;
+  width: 2.1rem;
+
+  @media (min-width: $breakpoint-md) {
+    width: 2.625rem;
+  }
 }
 
 .list-item__body {
@@ -142,10 +169,25 @@ $breakpoint-xl: 1200px;
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
-  padding-bottom: calc($progress-step-done-height / 2 - $progress-step-height / 2);
 
   @media (min-width: $breakpoint-sm) {
     flex-direction: column;
+    padding-bottom: calc($progress-step-done-height-lg / 2 - $progress-step-height / 2);
+  }
+}
+
+.progress-step + .progress-step {
+  margin-top: $spacer-3;
+}
+
+.progress-step__info {
+  order: 2;
+  padding-left: $spacer-3;
+
+  @media (min-width: $breakpoint-sm) {
+    order: 0;
+    margin-bottom: auto;
+    padding-left: 0;
   }
 }
 
@@ -154,14 +196,8 @@ $breakpoint-xl: 1200px;
   text-transform: uppercase;
   text-align: center;
   margin-top: 0;
-  margin-bottom: auto;
+  margin-bottom: 0;
   color: $theme-positive-green-text-muted;
-  order: 2;
-
-  @media (min-width: $breakpoint-sm) {
-    flex-direction: column;
-    order: 0;
-  }
 }
 
 .progress-step__icon {
@@ -175,25 +211,31 @@ $breakpoint-xl: 1200px;
 .progress-step--done {
   padding-bottom: 0;
 
+  .progress-step__info {
+    margin-bottom: $spacer;
+  }
+
   .progress-step__title {
     color: $theme-positive-green;
-    margin-bottom: $spacer;
   }
 
   .progress-step__icon {
     content: svg-load(../images/icon-lightbulb.svg, fill=#fff);
-    padding: calc($progress-step-done-height / 4);
-    width: calc($progress-step-done-height / 2);
-    height: calc($progress-step-done-height / 2);
     border-radius: 50%;
     background-color: $theme-positive-green;
+
+    @media (min-width: $breakpoint-md) {
+      padding: calc($progress-step-done-height-lg / 4);
+      width: calc($progress-step-done-height-lg / 2);
+      height: calc($progress-step-done-height-lg / 2);
+    }
   }
 }
 
 .progress-bar {
   position: absolute;
   width: 100%;
-  bottom: calc($progress-step-done-height / 2);
+  bottom: calc($progress-step-done-height-lg / 2);
   margin-bottom: -calc($progress-rail-height / 2);
 }
 
