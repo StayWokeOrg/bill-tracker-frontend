@@ -223,17 +223,26 @@ $breakpoint-xl: 1200px;
     flex-direction: column;
     padding-bottom: calc($progress-horizontal-step-diameter / 2 - $progress-horizontal-step-diameter / 2);
   }
+}
 
-  &:not(:first-child)::before {
-    content: '';
-    position: absolute;
+.progress-step:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  z-index: -10;
+  background-color: $theme-positive-green-inactive;
+  width: $progress-bar-thickness;
+  height: 100%;
+  top: -50%;
+  left: calc($progress-vertical-step-diameter / 2);
+  margin-left: -calc($progress-bar-thickness / 2);
+
+  @media (min-width: $breakpoint-sm) {
     width: 100%;
     height: $progress-bar-thickness-lg;
     left: -50%;
+    top: auto;
     bottom: calc($progress-horizontal-step-diameter / 2);
     margin-bottom: -calc($progress-bar-thickness-lg / 2);
-    z-index: -10;
-    background-color: $theme-positive-green-inactive;
   }
 }
 
