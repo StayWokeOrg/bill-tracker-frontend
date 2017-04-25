@@ -9,6 +9,7 @@
     "cssnano": "^3.10.0",
     "postcss-cli": "^3.0.0",
     "postcss-extend": "^1.0.5",
+    "postcss-flexbugs-fixes": "^2.1.1",
     "postcss-hexrgba": "^0.2.1",
     "postcss-import": "^9.1.0",
     "postcss-inline-svg": "^2.3.0",
@@ -31,6 +32,7 @@
       "postcss-hexrgba": {},
       "postcss-inline-svg": {},
       "postcss-strip-inline-comments": {},
+      "postcss-flexbugs-fixes": {},
       "cssnano": {}
     }
   }

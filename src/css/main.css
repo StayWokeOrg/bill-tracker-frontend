@@ -26,8 +26,7 @@ $progress-counter: progress-counter;
 $progress-bar-thickness: 3px;
 $progress-bar-thickness-lg: 6px;
 
-$progress-horizontal-step-diameter: 32px;
-$progress-horizontal-step-done-diameter: 55px;
+$progress-horizontal-step-diameter: 55px;
 $progress-vertical-step-diameter: 40px;
 
 $breakpoint-xs: 0;
@@ -207,19 +206,34 @@ $breakpoint-xl: 1200px;
 
   @media (min-width: $breakpoint-sm) {
     flex-direction: row;
+    justify-content: stretch;
     align-items: stretch;
   }
 }
 
 .progress-step {
+  flex: 1;
   display: inline-flex;
+  position: relative;
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
 
   @media (min-width: $breakpoint-sm) {
     flex-direction: column;
-    padding-bottom: calc($progress-horizontal-step-done-diameter / 2 - $progress-horizontal-step-diameter / 2);
+    padding-bottom: calc($progress-horizontal-step-diameter / 2 - $progress-horizontal-step-diameter / 2);
+  }
+
+  &:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: $progress-bar-thickness-lg;
+    left: -50%;
+    bottom: calc($progress-horizontal-step-diameter / 2);
+    margin-bottom: -calc($progress-bar-thickness-lg / 2);
+    z-index: -10;
+    background-color: $theme-positive-green-inactive;
   }
 }
 
@@ -275,6 +289,10 @@ $breakpoint-xl: 1200px;
 .progress-step--done {
   padding-bottom: 0;
 
+  &:not(:first-child)::before {
+    background-color: $theme-positive-green;
+  }
+
   .progress-step__info {
     @media (min-width: $breakpoint-sm) {
       margin-bottom: 0.35rem;
@@ -291,9 +309,9 @@ $breakpoint-xl: 1200px;
 
   .progress-step__icon {
     @media (min-width: $breakpoint-sm) {
-      padding: calc($progress-horizontal-step-done-diameter / 4);
-      width: calc($progress-horizontal-step-done-diameter / 2);
-      height: calc($progress-horizontal-step-done-diameter / 2);
+      padding: calc($progress-horizontal-step-diameter / 4);
+      width: calc($progress-horizontal-step-diameter / 2);
+      height: calc($progress-horizontal-step-diameter / 2);
     }
   }
 }
@@ -309,7 +327,7 @@ $breakpoint-xl: 1200px;
   @media (min-width: $breakpoint-sm) {
     width: 100%;
     height: auto;
-    bottom: calc($progress-horizontal-step-done-diameter / 2);
+    bottom: calc($progress-horizontal-step-diameter / 2);
     top: auto;
     left: 0;
     margin-bottom: -calc($progress-bar-thickness-lg / 2);
