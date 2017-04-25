@@ -7,9 +7,13 @@ $spacer-4: 1.25rem;
 $spacer-5: 1.5rem;
 $spacer-6: 1.75rem;
 
-$theme-positive-green: #00C870;
-$theme-positive-green-inactive: #C4EDDC;
-$theme-positive-green-text-muted: #ABD1C1;
+$theme-green: #00C870;
+$theme-green-inactive: #C4EDDC;
+$theme-green-text-muted: #ABD1C1;
+
+$theme-red: red;
+$theme-red-inactive: #C4EDDC;
+$theme-red-text-muted: #ABD1C1;
 
 $border-color: #e0e0e0;
 $border-radius: 4px;
@@ -42,8 +46,47 @@ $breakpoint-xl: 1200px;
   margin: 0;
 }
 
-%body {
+%theme-bg-primary {
+  .theme--green & {
+    background-color: $theme-green;
+  }
+
+  .theme--red & {
+    background-color: $theme-red;
+  }
 }
+
+
+%theme-bg-inactive {
+  .theme--green & {
+    background-color: $theme-green-inactive;
+  }
+
+  .theme--red & {
+    background-color: $theme-red-inactive;
+  }
+}
+
+%theme-text-primary {
+  .theme--green & {
+    color: $theme-green;
+  }
+
+  .theme--red & {
+    color: $theme-red;
+  }
+}
+
+%theme-text-muted {
+  .theme--green & {
+    color: $theme-green-text-muted;
+  }
+
+  .theme--red & {
+    color: $theme-red-text-muted;
+  }
+}
+
 
 .test-container {
   padding-top: calc($spacer-5 * 4);
@@ -114,8 +157,9 @@ $breakpoint-xl: 1200px;
 }
 
 .card-header {
+  @extend %theme-bg-primary;
+
   display: flex;
-  background-color: $theme-positive-green;
   color: white;
   border-top-right-radius: $border-radius;
   border-top-left-radius: $border-radius;
@@ -124,6 +168,7 @@ $breakpoint-xl: 1200px;
 .card-header__title,
 .card-header__subtitle {
   @extend %heading;
+
   align-self: center;
   padding-top: $spacer-2;
   padding-bottom: $spacer-2;
@@ -226,10 +271,11 @@ $breakpoint-xl: 1200px;
 }
 
 .progress-step:not(:first-child)::before {
+  @extend %theme-bg-inactive;
+
   content: '';
   position: absolute;
   z-index: -10;
-  background-color: $theme-positive-green-inactive;
   width: $progress-bar-thickness;
   height: 100%;
   top: -50%;
@@ -268,19 +314,17 @@ $breakpoint-xl: 1200px;
 
 .progress-step__title,
 .progress-step__subtitle {
+  @extend %theme-text-muted;
+
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
   font-size: $font-size-caption;
-  color: $theme-positive-green-text-muted;
-
-  @media (min-width: $breakpoint-sm) {
-  }
 }
 
 .progress-step__icon-wrapper {
+  @extend %theme-bg-inactive;
   border-radius: 50%;
-  background-color: $theme-positive-green-inactive;
 }
 
 .progress-step__icon {
@@ -298,76 +342,21 @@ $breakpoint-xl: 1200px;
 .progress-step--done {
   padding-bottom: 0;
 
-  &:not(:first-child)::before {
-    background-color: $theme-positive-green;
-  }
-
   .progress-step__info {
     @media (min-width: $breakpoint-sm) {
       margin-bottom: 0.35rem;
     }
   }
-
-  .progress-step__title {
-    color: $theme-positive-green;
-  }
-
-  .progress-step__icon-wrapper {
-    background-color: $theme-positive-green;
-  }
-
-  .progress-step__icon {
-    @media (min-width: $breakpoint-sm) {
-      padding: calc($progress-horizontal-step-diameter / 4);
-      width: calc($progress-horizontal-step-diameter / 2);
-      height: calc($progress-horizontal-step-diameter / 2);
-    }
-  }
 }
 
-.progress-bar {
-  position: absolute;
-  /* HACK - find better way to give bar top/bottom padding */
-  height: 95%;
-  top: 0;
-  left: calc($progress-vertical-step-diameter / 2);
-  margin-left: -calc($progress-bar-thickness / 2);
-
-  @media (min-width: $breakpoint-sm) {
-    width: 100%;
-    height: auto;
-    bottom: calc($progress-horizontal-step-diameter / 2);
-    top: auto;
-    left: 0;
-    margin-bottom: -calc($progress-bar-thickness-lg / 2);
-    margin-left: 0;
-  }
+.progress-step--done .progress-step__icon-wrapper {
+  @extend %theme-bg-primary;
 }
 
-.progress-bar__inner {
-  z-index: -10;
-  position: relative;
-  width: $progress-bar-thickness;
-  height: 100%;
-  background-color: $theme-positive-green-inactive;
-
-  @media (min-width: $breakpoint-sm) {
-    width: auto;
-    height: $progress-bar-thickness-lg;
-    margin: 0 40px;
-  }
+.progress-step--done .progress-step__title {
+  @extend %theme-text-primary;
 }
 
-.progress-bar__inner:after {
-  content: '';
-  position: absolute;
-  height: 66%;
-  width: $progress-bar-thickness;
-  background-color: $theme-positive-green;
-  z-index: 10;
-
-  @media (min-width: $breakpoint-sm) {
-    width: 66%;
-    height: $progress-bar-thickness-lg;
-  }
+.progress-step.progress-step--done:not(:first-child)::before {
+  @extend %theme-bg-primary;
 }
