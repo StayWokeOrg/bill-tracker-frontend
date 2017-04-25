@@ -16,17 +16,19 @@ $border-radius: 4px;
 $border: 1px solid $border-color;
 
 $font-size-caption: 0.75rem;
-$font-size-body: 0.9375rem;
+$font-size-body: 1rem;
 $font-size-heading: 1.125rem;
 
 $line-height-headings: 1.33;
 $line-height-body: 1.5;
 
-$progress-bar-thickness: 4px;
-$progress-bar-thickness-lg: 7px;
+$progress-counter: progress-counter;
+$progress-bar-thickness: 3px;
+$progress-bar-thickness-lg: 6px;
 
-$progress-step-height: 32px;
-$progress-step-done-height-lg: 55px;
+$progress-horizontal-step-diameter: 32px;
+$progress-horizontal-step-done-diameter: 55px;
+$progress-vertical-step-diameter: 40px;
 
 $breakpoint-xs: 0;
 $breakpoint-sm: 576px;
@@ -41,6 +43,9 @@ $breakpoint-xl: 1200px;
   margin: 0;
 }
 
+%body {
+}
+
 .test-container {
   padding-top: calc($spacer-5 * 4);
   max-width: 720px;
@@ -48,9 +53,38 @@ $breakpoint-xl: 1200px;
   font-family: sans-serif;
 }
 
+/* ICON CLASSES */
+
+.icon-bill {
+  content: svg-load(../images/icon-bill.svg, fill=#fff);
+}
+
+.icon-lightbulb {
+  content: svg-load(../images/icon-lightbulb.svg, fill=#fff);
+}
+
+.icon-congress-1 {
+  content: svg-load(../images/icon-congress-1.svg, fill=#fff);
+}
+
+.icon-congress-2 {
+  content: svg-load(../images/icon-congress-2.svg, fill=#fff);
+}
+
+.icon-gavel {
+  content: svg-load(../images/icon-gavel.svg, fill=#fff);
+}
+
+/* CARD */
+
 .card {
   border-radius: 3px;
   box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.05);
+  font-size: 110%;
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: 100%;
+  }
 }
 
 .card-body {
@@ -117,6 +151,9 @@ $breakpoint-xl: 1200px;
   }
 }
 
+
+/* LIST */
+
 .list {
   list-style: none;
   margin: 0;
@@ -131,10 +168,17 @@ $breakpoint-xl: 1200px;
   }
 }
 
+.list-item + .list-item {
+  padding-top: $spacer-5;
+  margin-top: $spacer-5;
+  border-top: $border;
+}
+
 .list-item__icon {
-  width: 2.1rem;
+  display: none;
 
   @media (min-width: $breakpoint-md) {
+    display: block;
     width: 2.625rem;
   }
 }
@@ -149,8 +193,10 @@ $breakpoint-xl: 1200px;
 }
 
 .list-item__desc {
-  margin: 0 0 $spacer-6 0;
+  margin: 0 0 $spacer-4 0;
 }
+
+/* PROGRESS */
 
 .progress {
   display: flex;
@@ -173,7 +219,7 @@ $breakpoint-xl: 1200px;
 
   @media (min-width: $breakpoint-sm) {
     flex-direction: column;
-    padding-bottom: calc($progress-step-done-height-lg / 2 - $progress-step-height / 2);
+    padding-bottom: calc($progress-horizontal-step-done-diameter / 2 - $progress-horizontal-step-diameter / 2);
   }
 }
 
@@ -186,53 +232,68 @@ $breakpoint-xl: 1200px;
 }
 
 .progress-step__info {
-  order: 2;
   padding-left: $spacer-3;
+  order: 2;
 
   @media (min-width: $breakpoint-sm) {
-    order: 0;
     margin-bottom: auto;
     padding-left: 0;
+    text-align: center;
+    order: 0;
   }
 }
 
-.progress-step__title {
-  font-size: $font-size-caption;
+.progress-step__title,
+.progress-step__subtitle {
   text-transform: uppercase;
-  text-align: center;
   margin-top: 0;
   margin-bottom: 0;
+  font-size: $font-size-caption;
   color: $theme-positive-green-text-muted;
+
+  @media (min-width: $breakpoint-sm) {
+  }
+}
+
+.progress-step__icon-wrapper {
+  border-radius: 50%;
+  background-color: $theme-positive-green-inactive;
 }
 
 .progress-step__icon {
-  padding: calc($progress-step-height / 4);
-  width: calc($progress-step-height / 2);
-  height: calc($progress-step-height / 2);
-  border-radius: 50%;
-  background-color: $theme-positive-green-inactive;
+  padding: calc($progress-vertical-step-diameter / 4);
+  width: calc($progress-vertical-step-diameter / 2);
+  height: calc($progress-vertical-step-diameter / 2);
+
+  @media (min-width: $breakpoint-sm) {
+    padding: calc($progress-horizontal-step-diameter / 4);
+    width: calc($progress-horizontal-step-diameter / 2);
+    height: calc($progress-horizontal-step-diameter / 2);
+  }
 }
 
 .progress-step--done {
   padding-bottom: 0;
 
   .progress-step__info {
-    margin-bottom: $spacer;
+    @media (min-width: $breakpoint-sm) {
+      margin-bottom: 0.35rem;
+    }
   }
 
   .progress-step__title {
     color: $theme-positive-green;
   }
 
-  .progress-step__icon {
-    content: svg-load(../images/icon-lightbulb.svg, fill=#fff);
-    border-radius: 50%;
+  .progress-step__icon-wrapper {
     background-color: $theme-positive-green;
+  }
 
+  .progress-step__icon {
     @media (min-width: $breakpoint-sm) {
-      padding: calc($progress-step-done-height-lg / 4);
-      width: calc($progress-step-done-height-lg / 2);
-      height: calc($progress-step-done-height-lg / 2);
+      padding: calc($progress-horizontal-step-done-diameter / 4);
+      width: calc($progress-horizontal-step-done-diameter / 2);
+      height: calc($progress-horizontal-step-done-diameter / 2);
     }
   }
 }
@@ -241,14 +302,16 @@ $breakpoint-xl: 1200px;
   position: absolute;
   /* HACK - find better way to give bar top/bottom padding */
   height: 95%;
-  left: calc($progress-step-height / 2);
+  top: 0;
+  left: calc($progress-vertical-step-diameter / 2);
   margin-left: -calc($progress-bar-thickness / 2);
 
   @media (min-width: $breakpoint-sm) {
     width: 100%;
     height: auto;
-    bottom: calc($progress-step-done-height-lg / 2);
-    left: auto;
+    bottom: calc($progress-horizontal-step-done-diameter / 2);
+    top: auto;
+    left: 0;
     margin-bottom: -calc($progress-bar-thickness-lg / 2);
     margin-left: 0;
   }
@@ -271,13 +334,13 @@ $breakpoint-xl: 1200px;
 .progress-bar__inner:after {
   content: '';
   position: absolute;
-  height: 33%;
+  height: 66%;
   width: $progress-bar-thickness;
   background-color: $theme-positive-green;
   z-index: 10;
 
   @media (min-width: $breakpoint-sm) {
-    width: 33%;
+    width: 66%;
     height: $progress-bar-thickness-lg;
   }
 }
