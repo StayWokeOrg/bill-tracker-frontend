@@ -8,12 +8,12 @@ $spacer-5: 1.5rem;
 $spacer-6: 1.75rem;
 
 $theme-green: #00C870;
-$theme-green-inactive: #C4EDDC;
+$theme-green-inactive: #ABEBD1;
 $theme-green-text-muted: #ABD1C1;
 
-$theme-red: red;
-$theme-red-inactive: #C4EDDC;
-$theme-red-text-muted: #ABD1C1;
+$theme-red: #E53935;
+$theme-red-inactive: #FFCDD2;
+$theme-red-text-muted: #aaa;
 
 $border-color: #e0e0e0;
 $border-radius: 4px;
@@ -213,8 +213,8 @@ $breakpoint-xl: 1200px;
 }
 
 .list-item + .list-item {
-  padding-top: $spacer-5;
-  margin-top: $spacer-5;
+  padding-top: $spacer-6;
+  margin-top: $spacer-6;
   border-top: $border;
 }
 
