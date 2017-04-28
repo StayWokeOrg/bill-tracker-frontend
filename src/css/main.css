@@ -26,7 +26,6 @@ $font-size-heading: 1.125rem;
 $line-height-headings: 1.33;
 $line-height-body: 1.5;
 
-$progress-counter: progress-counter;
 $progress-bar-thickness: 3px;
 $progress-bar-thickness-lg: 6px;
 
@@ -116,6 +115,8 @@ $breakpoint-xl: 1200px;
 .icon-gavel {
   content: svg-load(../images/icon-gavel.svg, fill=#fff);
 }
+
+
 
 /* CARD */
 
@@ -218,13 +219,17 @@ $breakpoint-xl: 1200px;
   border-top: $border;
 }
 
-.list-item__icon {
+.list-item__icon-wrapper {
   display: none;
 
   @media (min-width: $breakpoint-md) {
     display: block;
     width: 2.625rem;
   }
+}
+
+.list-item__icon {
+  content: svg-load(../images/icon-bill.svg, fill=#fff);
 }
 
 .list-item__body {
