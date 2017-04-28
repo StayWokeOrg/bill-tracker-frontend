@@ -1,7 +1,7 @@
 This is a simple HTML/CSS repo with some build tools sprinkled in to make
 development easier and production files more performant/reliable.
 
-This build process uses [PostCSS](https://github.com/postcss/postcss) plugins
+The build process uses [PostCSS](https://github.com/postcss/postcss) plugins
 (configured in [postcss.config.js](/files/postcss.config.js)) to allow things like
 minification, SCSS syntax, autoprefixing, SVG loading and more.
 
