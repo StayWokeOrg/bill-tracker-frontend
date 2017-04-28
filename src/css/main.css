@@ -97,23 +97,23 @@ $breakpoint-xl: 1200px;
 /* ICON CLASSES */
 
 .icon-bill {
-  content: svg-load(../images/icon-bill.svg, fill=#fff);
+  content: svg-load(../svgs/icon-bill.svg, fill=#fff);
 }
 
 .icon-lightbulb {
-  content: svg-load(../images/icon-lightbulb.svg, fill=#fff);
+  content: svg-load(../svgs/icon-lightbulb.svg, fill=#fff);
 }
 
 .icon-congress-1 {
-  content: svg-load(../images/icon-congress-1.svg, fill=#fff);
+  content: svg-load(../svgs/icon-congress-1.svg, fill=#fff);
 }
 
 .icon-congress-2 {
-  content: svg-load(../images/icon-congress-2.svg, fill=#fff);
+  content: svg-load(../svgs/icon-congress-2.svg, fill=#fff);
 }
 
 .icon-gavel {
-  content: svg-load(../images/icon-gavel.svg, fill=#fff);
+  content: svg-load(../svgs/icon-gavel.svg, fill=#fff);
 }
 
 
@@ -229,7 +229,7 @@ $breakpoint-xl: 1200px;
 }
 
 .list-item__icon {
-  content: svg-load(../images/icon-bill.svg, fill=#fff);
+  content: svg-load(../svgs/icon-bill.svg, fill=#fff);
 }
 
 .list-item__body {
