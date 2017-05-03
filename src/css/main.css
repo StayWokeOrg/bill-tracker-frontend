@@ -24,6 +24,8 @@ $font-size-heading: 1.125rem;
 $line-height-headings: 1.33;
 $line-height-body: 1.5;
 
+$card-max-width: 720px;
+
 $progress-bar-thickness: 3px;
 $progress-bar-thickness-lg: 6px;
 
@@ -87,7 +89,7 @@ $breakpoint-xl: 1200px;
 
 .test-container {
   padding-top: calc($spacer-5 * 4);
-  max-width: 720px;
+  max-width: $card-max-width;
   margin: 0 auto;
   font-family: sans-serif;
 }
@@ -115,13 +117,17 @@ $breakpoint-xl: 1200px;
 }
 
 
-
 /* CARD */
 
 .card {
+  font-size: 110%;
+  margin: $spacer-4 auto 0;
+  max-width: $card-max-width;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
   border-radius: 3px;
   box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.05);
-  font-size: 110%;
 
   @media (min-width: $breakpoint-lg) {
     font-size: 100%;
@@ -278,16 +284,17 @@ $breakpoint-xl: 1200px;
 
   content: '';
   position: absolute;
-  z-index: -10;
+  z-index: 0;
   width: $progress-bar-thickness;
   height: 100%;
-  top: -50%;
+  top: -calc($progress-vertical-step-diameter / 2);
   left: calc($progress-vertical-step-diameter / 2);
   margin-left: -calc($progress-bar-thickness / 2);
 
   @media (min-width: $breakpoint-sm) {
     width: 100%;
     height: $progress-bar-thickness-lg;
+    top: -50%;
     left: -50%;
     top: auto;
     bottom: calc($progress-horizontal-step-diameter / 2);
@@ -322,12 +329,14 @@ $breakpoint-xl: 1200px;
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: $font-size-caption;
+  font-size: $font-size-caption !important;
+  font-weight: bold !important;
 }
 
 .progress-step__icon-wrapper {
   @extend %theme-bg-inactive;
   border-radius: 50%;
+  z-index: 5;
 }
 
 .progress-step__icon {
@@ -362,32 +371,4 @@ $breakpoint-xl: 1200px;
 
 .progress-step.progress-step--done:not(:first-child)::before {
   @extend %theme-bg-primary;
-}
-
-
-/* Hacky additions from Matt -- feel free to clean these back in where they should be! */
-
-.card {
-    margin: 1em auto;
-    max-width: 720px;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    word-wrap: break-word;
-}
-
-@media only screen and (max-width: 575px) {
-    .progress-step__icon-wrapper {
-        z-index: 5;
-    }
-
-    .progress-step:not(:first-child):before {
-        top: -1em;
-        z-index: 0;
-    }
-}
-
-/* Nasty overrides because of way-too-strong Wiki specificity */
-.progress-step__title, .progress-step__subtitle {
-    font-size: 0.75rem !important;
-    font-weight: bold;
 }
