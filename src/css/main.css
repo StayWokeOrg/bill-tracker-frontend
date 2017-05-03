@@ -1,5 +1,3 @@
-@import "normalize.css";
-
 $spacer: 0.5rem;
 $spacer-2: 0.75rem;
 $spacer-3: 1rem;
@@ -364,4 +362,32 @@ $breakpoint-xl: 1200px;
 
 .progress-step.progress-step--done:not(:first-child)::before {
   @extend %theme-bg-primary;
+}
+
+
+/* Hacky additions from Matt -- feel free to clean these back in where they should be! */
+
+.card {
+    margin: 1em auto;
+    max-width: 720px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+@media only screen and (max-width: 575px) {
+    .progress-step__icon-wrapper {
+        z-index: 5;
+    }
+
+    .progress-step:not(:first-child):before {
+        top: -1em;
+        z-index: 0;
+    }
+}
+
+/* Nasty overrides because of way-too-strong Wiki specificity */
+.progress-step__title, .progress-step__subtitle {
+    font-size: 0.75rem !important;
+    font-weight: bold;
 }
