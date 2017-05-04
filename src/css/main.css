@@ -6,12 +6,16 @@ $spacer-5: 1.5rem;
 $spacer-6: 1.75rem;
 
 $theme-green: #00C870;
-$theme-green-inactive: #ABEBD1;
+$theme-green-inactive: #99e9c6;
 $theme-green-text-muted: #ABD1C1;
 
 $theme-red: #E53935;
-$theme-red-inactive: #FFCDD2;
-$theme-red-text-muted: #aaa;
+$theme-red-inactive: #f5b0ae;
+$theme-red-text-muted: #f5b0ae;
+
+$theme-yellow: #E2D931;
+$theme-yellow-inactive: #F6F3C1;
+$theme-yellow-text-muted: #E9E6B7;
 
 $border-color: #e0e0e0;
 $border-radius: 4px;
@@ -53,6 +57,10 @@ $breakpoint-xl: 1200px;
   .theme--red & {
     background-color: $theme-red;
   }
+
+  .theme--yellow & {
+    background-color: $theme-yellow;
+  }
 }
 
 
@@ -64,6 +72,10 @@ $breakpoint-xl: 1200px;
   .theme--red & {
     background-color: $theme-red-inactive;
   }
+
+  .theme--yellow & {
+    background-color: $theme-yellow-inactive;
+  }
 }
 
 %theme-text-primary {
@@ -74,6 +86,10 @@ $breakpoint-xl: 1200px;
   .theme--red & {
     color: $theme-red;
   }
+
+  .theme--yellow & {
+    color: $theme-yellow;
+  }
 }
 
 %theme-text-muted {
@@ -83,6 +99,10 @@ $breakpoint-xl: 1200px;
 
   .theme--red & {
     color: $theme-red-text-muted;
+  }
+
+  .theme--yellow & {
+    color: $theme-yellow-text-muted;
   }
 }
 
